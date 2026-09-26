@@ -1,0 +1,38 @@
+/* =================================================================== */
+/* ROUTEVIA RESPONSIVE BREAKPOINT OVERRIDES                            */
+/* =================================================================== */
+
+@media (max-width: 1199.98px) {
+    .rv-hero-title {
+        font-size: 2.3rem;
+    }
+    .rv-booking-panel {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .rv-hero-title {
+        font-size: 1.85rem;
+    }
+    .rv-hero-subtitle {
+        font-size: 0.95rem;
+    }
+    .rv-btn-swap {
+        transform: rotate(90deg);
+        margin: 0.25rem auto;
+    }
+    .rv-btn-swap:hover {
+        transform: rotate(270deg);
+    }
+    .rv-map-viewport {
+        height: 240px;
+    }
+    .rv-ai-container {
+        border-radius: 16px;
+    }
+    .rv-panel-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

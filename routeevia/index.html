@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Routevia Travels — Smart AI Bus Ticketing & GPS Tracking System</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    body {
+      background-color: #0d1117;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+    }
+    .rv-card-dark {
+      background: #161b22;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .animate-pulse {
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+    .text-teal {
+      color: #00d2c4 !important;
+    }
+  </style>
+</head>
+<body class="rv-app-body bg-dark text-white">
+
+  <div class="bg-primary bg-gradient text-white py-1 px-3 small d-flex justify-content-between align-items-center">
+    <div class="container-fluid px-lg-5 d-flex align-items-center gap-3">
+      <span class="badge bg-danger text-white fw-bold"><i class="bi bi-broadcast me-1"></i> LIVE</span>
+      <marquee class="small opacity-90 fw-medium">
+        ⚡ Monsoon Discount Alert: Use code <strong class="text-warning">ROUTE2026</strong> for flat 15% off on all Mumbai → Pune & Bengaluru → Goa express buses! | GPS Telemetry systems active across 1,420+ fleets today.
+      </marquee>
+    </div>
+    <div class="d-none d-md-flex gap-3 align-items-center me-lg-4 text-nowrap">
+      <span><i class="bi bi-telephone-fill me-1"></i> 24/7 Helpline: 1800-ROUTEVIA</span>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg sticky-top rv-navbar border-bottom border-secondary border-opacity-25 bg-dark">
+    <div class="container-fluid px-lg-5">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <div class="rv-logo-badge bg-primary p-2 rounded-3">
+          <i class="bi bi-bus-front-fill text-white fs-5"></i>
+        </div>
+        <span class="fw-extrabold text-white tracking-tight fs-4">ROUTEVIA <span class="text-info fs-6 fw-bold">TRAVELS</span></span>
+      </a>
+
+      <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#rvNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="rvNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
+          <li class="nav-item">
+            <a class="nav-link text-white active fw-semibold" href="#hero-search">
+              <i class="bi bi-ticket-perforated me-1 text-info"></i><span data-i18n="nav_tickets">Bus Tickets</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white opacity-75 fw-semibold" href="#gps-tracker">
+              <i class="bi bi-geo-alt me-1 text-info"></i><span data-i18n="nav_track">Track Bus GPS</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white opacity-75 fw-semibold" href="#live-results">
+              <i class="bi bi-journal-bookmark me-1 text-info"></i><span data-i18n="nav_bookings">My Bookings</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-info fw-semibold" href="#ai-assistant">
+              <i class="bi bi-cpu me-1"></i><span data-i18n="nav_ai">Routevia AI</span> <span class="badge bg-info text-dark">PRO</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white opacity-75 fw-semibold" href="#offers">
+              <i class="bi bi-percent me-1 text-info"></i><span data-i18n="nav_offers">Offers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white opacity-75 fw-semibold" href="#footer">
+              <i class="bi bi-headset me-1 text-info"></i><span data-i18n="nav_support">Support</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <select class="form-select form-select-sm rv-lang-select bg-secondary text-white border-0" aria-label="Language">
+            <option value="en" selected>English (US)</option>
+            <option value="hi">Hindi (हिंदी)</option>
+            <option value="mr">Marathi (मराठी)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero-search" class="rv-hero py-5">
+    <div class="container px-lg-5">
+      <div class="row align-items-center mb-4">
+        <div class="col-lg-7">
+          <span class="badge bg-info text-dark mb-3 px-3 py-2 fw-bold" data-i18n="hero_badge">SMART BUS TRANSPORT ECOSYSTEM</span>
+          <h1 class="display-4 fw-extrabold text-white mb-3">
+            <span data-i18n="hero_title_1">Your Journey.</span> <br>
+            <span class="text-info" data-i18n="hero_title_2">Smarter with Routevia.</span>
+          </h1>
+          <p class="lead text-light opacity-75" data-i18n="hero_desc">Book verified intercity buses, track live GPS locations, manage digital tickets, and rely on real-time predictive travel intelligence.</p>
+        </div>
+        <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
+          <div class="rv-live-counter d-inline-flex align-items-center gap-3 p-3 rounded-4 border border-secondary border-opacity-25 bg-secondary bg-opacity-25">
+            <i class="bi bi-broadcast text-danger fs-3"></i>
+            <div class="text-start">
+              <div class="small text-uppercase text-light opacity-75 fw-bold" data-i18n="status_title">Active Platform Status</div>
+              <div class="fw-bold text-white fs-5" data-i18n="status_desc">1,420+ Buses Live Tracked Today</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="searchSection" class="rv-card-dark p-4 rounded-4 border border-secondary border-opacity-25 shadow-lg bg-secondary bg-opacity-10">
+        <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+          <div class="d-flex gap-3">
+            <button class="btn btn-sm btn-primary active px-3"><i class="bi bi-bus-front me-1"></i><span data-i18n="nav_tickets">Bus Tickets</span></button>
+            <button class="btn btn-sm btn-outline-light px-3"><i class="bi bi-crosshair me-1"></i><span data-i18n="nav_track">Track Bus GPS</span></button>
+            <button class="btn btn-sm btn-outline-light px-3"><i class="bi bi-qr-code-scan me-1"></i><span data-i18n="nav_bookings">Digital Ticket</span></button>
+          </div>
+          <button id="btnSwapRoute" class="btn btn-sm btn-outline-info rounded-circle p-2" title="Swap Route">
+            <i class="bi bi-arrow-left-right"></i>
+          </button>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label class="form-label text-light opacity-75 small fw-semibold"><i class="bi bi-geo-alt-fill text-info me-1"></i> <span data-i18n="label_from">FROM</span></label>
+            <input type="text" id="searchFrom" class="form-control bg-dark text-white border-secondary" value="Mumbai" placeholder="Enter Origin">
+            <div class="small text-light opacity-50 mt-1">Maharashtra Hub</div>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label text-light opacity-75 small fw-semibold"><i class="bi bi-pin-map-fill text-info me-1"></i> <span data-i18n="label_to">TO</span></label>
+            <input type="text" id="searchTo" class="form-control bg-dark text-white border-secondary" value="Pune" placeholder="Enter Destination">
+            <div class="small text-light opacity-50 mt-1">Swargate / Wakad</div>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label text-light opacity-75 small fw-semibold"><i class="bi bi-calendar3 text-info me-1"></i> <span data-i18n="label_date">DATE</span></label>
+            <input type="date" id="searchDate" class="form-control bg-dark text-white border-secondary">
+            <div class="small text-light opacity-50 mt-1">Departure Date</div>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label text-light opacity-75 small fw-semibold"><i class="bi bi-people-fill text-info me-1"></i> <span data-i18n="label_passengers">PASSENGERS</span></label>
+            <select class="form-select bg-dark text-white border-secondary">
+              <option selected>1 Passenger (Adult)</option>
+              <option>2 Passengers</option>
+              <option>3 Passengers</option>
+            </select>
+            <div class="small text-light opacity-50 mt-1">AC Sleeper / Seater</div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-primary btn-lg w-100 fw-bold py-3 fs-5 rounded-3">
+            <i class="bi bi-search me-2"></i><span data-i18n="btn_search">SEARCH AVAILABLE BUSES</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Routes Grid rendered dynamically by js/main.js -->
+  <section class="py-4">
+    <div class="container px-lg-5">
+      <h5 class="fw-bold text-white mb-3"><i class="bi bi-fire text-warning me-2"></i>Popular Intercity Routes</h5>
+      <div id="popularRoutesGrid" class="row g-3"></div>
+    </div>
+  </section>
+
+  <section class="py-4">
+    <div class="container px-lg-5">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border border-secondary border-opacity-25 bg-secondary bg-opacity-10 h-100">
+            <div class="d-flex align-items-center gap-3">
+              <div class="bg-primary bg-opacity-25 p-3 rounded-3 text-info">
+                <i class="bi bi-lightning-charge-fill fs-3"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-1">Instant Seat Lock</h5>
+                <p class="small text-light opacity-75 mb-0">Reserve your preferred seats in real-time with zero latency layout maps.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border border-secondary border-opacity-25 bg-secondary bg-opacity-10 h-100">
+            <div class="d-flex align-items-center gap-3">
+              <div class="bg-info bg-opacity-25 p-3 rounded-3 text-info">
+                <i class="bi bi-geo-fill fs-3"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-1">Live GPS Telemetry</h5>
+                <p class="small text-light opacity-75 mb-0">Track exact bus speed, traffic delays, and boarding points on live map.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border border-secondary border-opacity-25 bg-secondary bg-opacity-10 h-100">
+            <div class="d-flex align-items-center gap-3">
+              <div class="bg-warning bg-opacity-25 p-3 rounded-3 text-warning">
+                <i class="bi bi-robot fs-3"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-1">Routevia AI Co-Pilot</h5>
+                <p class="small text-light opacity-75 mb-0">Get intelligent delay predictions, rest-stop info, and weather updates.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="live-results" class="py-5">
+    <div class="container px-lg-5">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+          <h3 class="fw-bold mb-1"><i class="bi bi-bus-front text-info me-2"></i>Available Express Routes</h3>
+          <p class="text-light opacity-75 small mb-0">Showing top 4 verified buses for <strong>Mumbai → Pune</strong></p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-light btn-sm"><i class="bi bi-arrow-down-up me-1"></i> Sort: Price Low to High</button>
+          <button class="btn btn-outline-info btn-sm"><i class="bi bi-sliders me-1"></i> Filter Options</button>
+        </div>
+      </div>
+
+      <div class="card bg-secondary bg-opacity-10 border border-secondary border-opacity-25 text-white mb-3 rounded-4 p-4">
+        <div class="row align-items-center">
+          <div class="col-lg-4 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h5 class="fw-bold mb-0">Neeta Tours & Travels</h5>
+              <span class="badge bg-success"><i class="bi bi-star-fill me-1"></i> 4.8</span>
+            </div>
+            <p class="small text-light opacity-75 mb-2">A/C Sleeper (2+1) • Volvo Multi-Axle</p>
+            <div class="d-flex gap-2">
+              <span class="badge bg-dark text-info"><i class="bi bi-wifi me-1"></i> Free Wi-Fi</span>
+              <span class="badge bg-dark text-info"><i class="bi bi-plug me-1"></i> Charging</span>
+              <span class="badge bg-dark text-info"><i class="bi bi-shield-check me-1"></i> Verified</span>
+            </div>
+          </div>
+          <div class="col-lg-5 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-between text-center">
+              <div>
+                <div class="fs-4 fw-bold">06:00 AM</div>
+                <div class="small text-light opacity-75">Bandra West</div>
+              </div>
+              <div>
+                <div class="small text-info fw-semibold">03h 30m</div>
+                <i class="bi bi-arrow-right fs-4 text-light opacity-50"></i>
+                <div class="small text-success">On-Time GPS</div>
+              </div>
+              <div>
+                <div class="fs-4 fw-bold">09:30 AM</div>
+                <div class="small text-light opacity-75">Swargate Pune</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 text-lg-end">
+            <div class="small text-light opacity-75">Starting from</div>
+            <div class="fs-3 fw-bold text-info mb-2">₹ 650</div>
+            <button class="btn btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#seatModal"><i class="bi bi-grid-3x3-gap me-1"></i> Select Seats</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-secondary bg-opacity-10 border border-secondary border-opacity-25 text-white mb-3 rounded-4 p-4">
+        <div class="row align-items-center">
+          <div class="col-lg-4 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h5 class="fw-bold mb-0">Purple Metrolink Express</h5>
+              <span class="badge bg-success"><i class="bi bi-star-fill me-1"></i> 4.6</span>
+            </div>
+            <p class="small text-light opacity-75 mb-2">BharatBenz A/C Seater (2+2)</p>
+            <div class="d-flex gap-2">
+              <span class="badge bg-dark text-info"><i class="bi bi-shield-check me-1"></i> Safe Travel</span>
+              <span class="badge bg-dark text-info"><i class="bi bi-plug me-1"></i> Charging</span>
+            </div>
+          </div>
+          <div class="col-lg-5 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-between text-center">
+              <div>
+                <div class="fs-4 fw-bold">08:15 AM</div>
+                <div class="small text-light opacity-75">Dadar East</div>
+              </div>
+              <div>
+                <div class="small text-info fw-semibold">03h 45m</div>
+                <i class="bi bi-arrow-right fs-4 text-light opacity-50"></i>
+                <div class="small text-success">Live Tracking</div>
+              </div>
+              <div>
+                <div class="fs-4 fw-bold">12:00 PM</div>
+                <div class="small text-light opacity-75">Wakad Bypass</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 text-lg-end">
+            <div class="small text-light opacity-75">Starting from</div>
+            <div class="fs-3 fw-bold text-info mb-2">₹ 520</div>
+            <button class="btn btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#seatModal"><i class="bi bi-grid-3x3-gap me-1"></i> Select Seats</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-secondary bg-opacity-10 border border-secondary border-opacity-25 text-white mb-3 rounded-4 p-4">
+        <div class="row align-items-center">
+          <div class="col-lg-4 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h5 class="fw-bold mb-0">VRL Logistics Express</h5>
+              <span class="badge bg-success"><i class="bi bi-star-fill me-1"></i> 4.9</span>
+            </div>
+            <p class="small text-light opacity-75 mb-2">Scania Multi-Axle A/C Sleeper</p>
+            <div class="d-flex gap-2">
+              <span class="badge bg-dark text-info"><i class="bi bi-wifi me-1"></i> Free Wi-Fi</span>
+              <span class="badge bg-dark text-info"><i class="bi bi-cup-hot me-1"></i> Snacks</span>
+            </div>
+          </div>
+          <div class="col-lg-5 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-between text-center">
+              <div>
+                <div class="fs-4 fw-bold">11:30 AM</div>
+                <div class="small text-light opacity-75">Borivali National Park</div>
+              </div>
+              <div>
+                <div class="small text-info fw-semibold">03h 20m</div>
+                <i class="bi bi-arrow-right fs-4 text-light opacity-50"></i>
+                <div class="small text-success">Express Route</div>
+              </div>
+              <div>
+                <div class="fs-4 fw-bold">02:50 PM</div>
+                <div class="small text-light opacity-75">Chandani Chowk Pune</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 text-lg-end">
+            <div class="small text-light opacity-75">Starting from</div>
+            <div class="fs-3 fw-bold text-info mb-2">₹ 780</div>
+            <button class="btn btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#seatModal"><i class="bi bi-grid-3x3-gap me-1"></i> Select Seats</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-secondary bg-opacity-10 border border-secondary border-opacity-25 text-white mb-3 rounded-4 p-4">
+        <div class="row align-items-center">
+          <div class="col-lg-4 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h5 class="fw-bold mb-0">MSRTC Shivneri Volvo</h5>
+              <span class="badge bg-primary"><i class="bi bi-shield-fill-check me-1"></i> Govt Operator</span>
+            </div>
+            <p class="small text-light opacity-75 mb-2">Volvo B11R A/C Premium Seater</p>
+            <div class="d-flex gap-2">
+              <span class="badge bg-dark text-info"><i class="bi bi-clock me-1"></i> High Punctuality</span>
+              <span class="badge bg-dark text-info"><i class="bi bi-plug me-1"></i> Charging</span>
+            </div>
+          </div>
+          <div class="col-lg-5 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-between text-center">
+              <div>
+                <div class="fs-4 fw-bold">02:00 PM</div>
+                <div class="small text-light opacity-75">Dadar Asiad Bus Stand</div>
+              </div>
+              <div>
+                <div class="small text-info fw-semibold">03h 15m</div>
+                <i class="bi bi-arrow-right fs-4 text-light opacity-50"></i>
+                <div class="small text-success">Express Lane</div>
+              </div>
+              <div>
+                <div class="fs-4 fw-bold">05:15 PM</div>
+                <div class="small text-light opacity-75">Swargate Central</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 text-lg-end">
+            <div class="small text-light opacity-75">Starting from</div>
+            <div class="fs-3 fw-bold text-info mb-2">₹ 560</div>
+            <button class="btn btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#seatModal"><i class="bi bi-grid-3x3-gap me-1"></i> Select Seats</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Ticket / Booking Modal -->
+  <div class="modal fade" id="ticketModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border border-secondary rounded-4 shadow-lg">
+        <div class="modal-header border-bottom border-secondary">
+          <h5 class="modal-title fw-bold"><i class="bi bi-ticket-perforated text-info me-2"></i>My Booked Tickets</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <i class="bi bi-qr-code-scan display-1 text-info mb-3"></i>
+          <h5 class="fw-bold">Booking ID: #RV-2026-8902</h5>
+          <p class="small text-light opacity-75 mb-0">Mumbai (Bandra West) → Swargate Pune</p>
+          <span class="badge bg-success mt-2">Status: Confirmed & Active</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="seatModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border border-secondary border-opacity-25 rounded-4 shadow-lg">
+        <div class="modal-header border-bottom border-secondary border-opacity-25">
+          <h5 class="modal-title fw-bold"><i class="bi bi-grid-3x3-gap text-info me-2"></i>Select Seats — Neeta Tours Volvo</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row">
+            <div class="col-md-7 border-end border-secondary border-opacity-25">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="small text-secondary fw-bold">FRONT / DRIVER</span>
+                <i class="bi bi-steering-wheel fs-4 text-info"></i>
+              </div>
+              
+              <div class="d-flex gap-3 mb-4 small">
+                <div><span class="badge bg-secondary p-2 me-1"></span> Available</div>
+                <div><span class="badge bg-success p-2 me-1"></span> Selected</div>
+                <div><span class="badge bg-danger p-2 me-1"></span> Booked</div>
+              </div>
+
+              <div class="row g-2 text-center fw-bold">
+                <div class="col-3"><button class="btn btn-outline-secondary w-100 py-2">A1</button></div>
+                <div class="col-3"><button class="btn btn-outline-secondary w-100 py-2">A2</button></div>
+                <div class="col-3 offset-3"><button class="btn btn-danger w-100 py-2" disabled>A3</button></div>
+
+                <div class="col-3"><button class="btn btn-outline-secondary w-100 py-2">B1</button></div>
+                <div class="col-3"><button class="btn btn-success w-100 py-2">B2</button></div>
+                <div class="col-3 offset-3"><button class="btn btn-outline-secondary w-100 py-2">B3</button></div>
+
+                <div class="col-3"><button class="btn btn-danger w-100 py-2" disabled>C1</button></div>
+                <div class="col-3"><button class="btn btn-outline-secondary w-100 py-2">C2</button></div>
+                <div class="col-3 offset-3"><button class="btn btn-outline-secondary w-100 py-2">C3</button></div>
+              </div>
+            </div>
+
+            <div class="col-md-5 mt-3 mt-md-0 ps-md-4">
+              <h6 class="fw-bold mb-3 text-info">Booking Summary</h6>
+              <div class="p-3 bg-secondary bg-opacity-10 rounded-3 mb-3 border border-secondary border-opacity-25">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="small text-light opacity-75">Selected Seat:</span>
+                  <span class="fw-bold text-white">B2 (A/C Sleeper)</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="small text-light opacity-75">Base Fare:</span>
+                  <span class="fw-bold text-white">₹ 650</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="small text-light opacity-75">Taxes & Insurance:</span>
+                  <span class="fw-bold text-white">₹ 45</span>
+                </div>
+                <hr class="border-secondary border-opacity-25">
+                <div class="d-flex justify-content-between fs-5 fw-bold">
+                  <span>Total Amount:</span>
+                  <span class="text-info">₹ 695</span>
+                </div>
+              </div>
+              <button class="btn btn-info w-100 fw-bold py-2 text-dark" onclick="alert('Seat locked! Proceeding to digital payment gateway.')">Proceed to Checkout →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="gps-tracker" class="py-5 bg-black bg-opacity-50 border-top border-bottom border-secondary border-opacity-25">
+    <div class="container px-lg-5">
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <span class="badge bg-danger text-white mb-2"><i class="bi bi-record-circle me-1 animate-pulse"></i> SATELLITE LIVE TELEMETRY</span>
+          <h2 class="fw-extrabold mb-3">Real-Time Fleet & Speed Monitoring</h2>
+          <p class="text-light opacity-75">Our onboard IoT GPS devices broadcast continuous telemetry data so you can accurately time your pickup and trace bus location on live satellite maps.</p>
+          
+          <div class="mt-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <i class="bi bi-speedometer2 text-info fs-3"></i>
+              <div>
+                <div class="fw-bold">82 km/h Average Expressway Speed</div>
+                <div class="small text-light opacity-50">Monitored live on Mumbai-Pune Expressway</div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <i class="bi bi-geo-alt-fill text-danger fs-3"></i>
+              <div>
+                <div class="fw-bold">Geofenced Rest-Stops & Alerts</div>
+                <div class="small text-light opacity-50">Automated SMS/App alerts when bus is 10 mins away</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="p-4 rounded-4 border border-secondary border-opacity-25 bg-secondary bg-opacity-10 text-center">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="fw-bold"><i class="bi bi-broadcast text-danger me-2"></i>Live Track Bus #MH-12-RV-9081</span>
+              <span class="badge bg-success">Status: On Time & Moving</span>
+            </div>
+            <div class="bg-dark rounded-3 p-5 border border-secondary border-opacity-25 d-flex flex-column align-items-center justify-content-center" style="min-height: 240px;">
+              <i class="bi bi-map text-info display-3 mb-2 opacity-50"></i>
+              <div class="fw-bold text-white fs-5">Interactive Live Telemetry Interface</div>
+              <p class="small text-light opacity-50 mb-0">Current Location: Approaching Lonavala Food Plaza (42 km remaining)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-assistant" class="py-5">
+    <div class="container px-lg-5">
+      <div class="p-4 p-lg-5 rounded-4 border border-info border-opacity-25 bg-secondary bg-opacity-10">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-cpu-fill text-info fs-3"></i>
+              <h3 class="fw-bold text-white mb-0">Routevia AI Intelligent Co-Pilot</h3>
+            </div>
+            <p class="text-light opacity-75 mb-3">Ask our neural AI assistant for traffic delay forecasts, optimal trip departure times, weather conditions along the highway, or rest stop recommendations in plain English.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge bg-dark text-info p-2 border border-secondary" style="cursor:pointer;">"Is Mumbai-Pune Expressway congested right now?"</span>
+              <span class="badge bg-dark text-info p-2 border border-secondary" style="cursor:pointer;">"Find me buses with clean rest-stops"</span>
+            </div>
+          </div>
+          <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
+            <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-25 text-start">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-robot text-info"></i>
+                <span class="small fw-bold text-white">Routevia AI Live Response</span>
+              </div>
+              <p class="small text-light opacity-75 mb-0">"Expressway traffic is smooth. Estimated travel time between Mumbai and Swargate Pune is 3 hrs 25 mins today."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="offers" class="py-4">
+    <div class="container px-lg-5">
+      <h4 class="fw-bold mb-3"><i class="bi bi-tags-fill text-warning me-2"></i>Exclusive Offers & Promo Codes</h4>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-secondary bg-opacity-10 rounded-3 border border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge bg-warning text-dark fw-bold mb-1">PROMO: ROUTE15</span>
+              <h6 class="fw-bold mb-0">Get 15% Instant Cashback</h6>
+              <span class="small text-light opacity-50">Valid on all Volvo & Scania bookings</span>
+            </div>
+            <button class="btn btn-outline-info btn-sm fw-bold">Copy Code</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 bg-secondary bg-opacity-10 rounded-3 border border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge bg-info text-dark fw-bold mb-1">PROMO: FIRSTBUS</span>
+              <h6 class="fw-bold mb-0">Flat ₹100 Off First Ticket</h6>
+              <span class="small text-light opacity-50">Applicable for new registered users</span>
+            </div>
+            <button class="btn btn-outline-info btn-sm fw-bold">Copy Code</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="border-top border-secondary border-opacity-25 py-5 bg-black mt-5">
+    <div class="container px-lg-5">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="rv-logo-badge bg-primary p-2 rounded-3">
+              <i class="bi bi-bus-front-fill text-white fs-5"></i>
+            </div>
+            <span class="fw-extrabold text-white tracking-tight fs-4">ROUTEVIA</span>
+          </div>
+          <p class="small text-light opacity-50">Routevia Travels is an AI-powered intercity bus ticketing and real-time fleet telemetry tracking platform designed for smart, stress-free travel across highway corridors.</p>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h6 class="fw-bold text-white mb-3">Quick Navigation</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="#hero-search" class="text-light opacity-50 text-decoration-none">Search Routes</a></li>
+            <li class="mb-2"><a href="#gps-tracker" class="text-light opacity-50 text-decoration-none">Live Tracking</a></li>
+            <li class="mb-2"><a href="#live-results" class="text-light opacity-50 text-decoration-none">Bus Operators</a></li>
+            <li class="mb-2"><a href="#offers" class="text-light opacity-50 text-decoration-none">Offers & Deals</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h6 class="fw-bold text-white mb-3">Customer Support</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="#" class="text-light opacity-50 text-decoration-none">Help Center</a></li>
+            <li class="mb-2"><a href="#" class="text-light opacity-50 text-decoration-none">Cancel Ticket</a></li>
+            <li class="mb-2"><a href="#" class="text-light opacity-50 text-decoration-none">Terms of Service</a></li>
+            <li class="mb-2"><a href="#" class="text-light opacity-50 text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold text-white mb-3">Subscribe to Travel Alerts</h6>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="Enter your email">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+          <p class="small text-light opacity-50">©️ 2026 Routevia Travels Inc. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Application Subsystems -->
+  <script src="js/translations.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Meta Messenger Chatbot Plugin -->
+  <div id="fb-root"></div>
+  <div id="fb-customer-chat" class="fb-customerchat"></div>
+
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "YOUR_META_PAGE_ID");
+    chatbox.setAttribute("attribution", "biz_inbox");
+  </script>
+
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v18.0'
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+</body>
+</html>
